@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Management</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta http-equiv='cache-control' content='no-store'>
+    <meta http-equiv='expires' content='no-store'>
+    <meta http-equiv='pragma' content='no-store'>
+</head>
+<body>
+    <style>
+        *{ margin: 0;padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
+        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        header{display: block;margin: auto;padding: 10px;}
+        header h1{color: aliceblue; font-size: 52px;display: inline-block;vertical-align: top;margin: 0 10px;}
+        header ul {  display: block;  text-align: right; float: right; font-size: 23px;  display: flex; list-style: none; right: 5px; top: 10px;}
+        header li { background-color: rgba(256, 256, 256, 0.6); margin: 10px; top: 20px; padding: 5px; border-radius: 30%;}
+        header li a { color: #360ee7b7;text-decoration: none;}
+        header li a:hover { color: #0f2e29; font-weight: bolder;}
+        .ADetail{width: 100%;position: absolute;}
+        #Gmap{width: 100%; height:90vh;}
+    </style>
+    <header>
+        <h1>帳戶管理系統</h1>
+        <ul>
+            <li><a href="https://topologyuav.com:5003/AMange/Dinfo/">機體資訊</a></li> 
+            <li><a href="https://topologyuav.com:5003/AMange/DTdata/">飛行歷程</a></li> 
+            <li><a href="https://topologyuav.com:5003/AMange/">上一頁</a></li>     
+        </ul>
+    </header>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2E3HNUOgw3RJfHZWFgVWOYGnTxfYPhDc
+            &callback=initMap&v=weekly" defer 
+        ></script>
+    <section class="ADetail"> 
+        <div id="Gmap"></div>
+    </section>
+    <script>
+        function initMap() {
+            var myLatLng = { lat: 24.802919070618568, lng:120.99921800849589 };
+            var map = new google.maps.Map(document.getElementById("Gmap"), {
+                zoom: 12,
+                center: myLatLng,
+                mapTypeControl: false,
+                streetViewConteol: false,
+                rotataControl: false,
+                fullscreenConrtol: false,
+            });
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                icon,
+                map: map,
+            });
+        }
+        window.onload = initMap;
+    </script>
+</body>
+</html>

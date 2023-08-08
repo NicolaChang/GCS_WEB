@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+    <meta http-equiv='cache-control' content='no-store'>
+    <meta http-equiv='expires' content='no-store'>
+    <meta http-equiv='pragma' content='no-store'>
+</head>
+<body>
+    <style>
+        *{margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
+        body{background-image: url(../static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        header{ z-index: -2; background-position: right center;}
+        .login{ text-align: center; align-items:center; justify-content:center; position: absolute; top:8%; left: 30%; z-index: 10;  padding: 0 20px;}
+        h1{color: aliceblue; font-size: 50px; text-align: center; margin: 30px 20px; padding: 20px; bottom: 20%;} 
+        h2{color: aliceblue; font-size: 30px; margin: 5px 100px 20px 0;}
+        input{ opacity: 0.5; font-size: 22px; }
+        #signin,#register{ float: right; padding: 10px 15px; margin: 40px 40px; opacity: 1;background-color: rgba(256, 256, 256, 0.8);border-radius: 15%;}
+        @media screen and (max-width: 1200px) and (min-width:769px) {
+            header{width:1200px; position: relative;} .login{ position: absolute;z-index: 10; width: 70%;top: 2%;left: 4%;}
+            h1{ font-size: 40px; bottom: 20%; } 
+            h2{ font-size: 30px; text-align: left; padding: 10px 15px;}
+            input{z-index: 99;font-size: 24px; width: auto;text-align: center}
+            .buttons{float: right; position: absolute; right: 30%;}
+            #signin,#register{font-size: 28px;text-align: center; padding: 15px 15px; margin: 35px 30px 0 0;}
+        }
+        @media screen and (max-width: 720px) {
+            body{display: flex;justify-content: center;}
+            header{ z-index: -2; width: 360px; height: 640px;position: relative;}
+            .login{ position: absolute;z-index: 10; width: 70%;top: 10%;left: 8%;}
+            h1{ font-size: 36px; bottom: 20%; } 
+            h2{ font-size: 28px; text-align: left;}
+            input{z-index: 99; font-size: 18px; width: auto;text-align: center}
+            #signin,#register{font-size: 18px; text-align: center; padding: 5px; margin: 10px;}
+        } 
+    </style>
+    <header>
+        <div class="login" id="loginck">
+            <form action="/Login/" method="post">
+                <h1>登入</h1>
+                <h2>使用者帳號 <input id="username" name="userid" type="email" value="" size="20" placeholder="請輸入註冊信箱" required pattern="^(?=.*[A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"> </h2>
+                <h2>使用者密碼 <input id="password" name="userpw" type="password" size="20" value="" minlength="8" placeholder="請輸入含英數至少八個字元" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的密碼格式:含英文字母大小寫、數字至少八個字元');"> </h2>
+                <h5 id="wrongpw"><span class="material-icons"></span></h5>
+                <div class="buttons">
+                    <a href="https://topologyuav.com:5003/Privacy/"><input id="signin" type="submit" value="登入"></a>
+                    <a href="https://topologyuav.com:5003/Register/"> <input id="register" type="button" value="註冊"></a>
+                </div>
+            </form>    
+        </div>
+    </header>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Management</title>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
+    <meta http-equiv='cache-control' content='no-store'>
+    <meta http-equiv='expires' content='no-store'>
+    <meta http-equiv='pragma' content='no-store'>
+    
+</head>
+<body>
+    <style>
+        *{ margin: 0;padding: 0; border: none; font-family: 'Courier New', Courier, monospace,sans-serif;}
+        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png);display: block;margin: auto;padding: 10px;z-index: 99;background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        header h1{color: aliceblue;font-size: 52px;display: inline-block;vertical-align: top;margin: 0 10px; }
+        header ul { display: block;  text-align: right; float: right; font-size: 23px;  display: flex; list-style: none; right: 5px; top: 10px;}
+        header li { background-color: rgba(256, 256, 256, 0.5); margin: 10px; top: 15px; padding: 5px; border-radius: 30%;}
+        header li a { color: #360ee7b7;text-decoration: none;}
+        header li a:hover { color: #0f2e29; font-weight: bolder;}
+        article{position: relative; flex-wrap: wrap; width:100%; height: auto;  float: right;}
+        #map{width:100%; height:65vh; z-index: -10; top: 0%;}
+        #data{display: block; z-index: 10; height: 8%; text-align: center; background-color: rgba(256, 256, 256, 0.5); padding: 5px 15px 0;}
+        #rtspmovie{position: absolute; width:100%; height:25vh; z-index: 10; top: 65vh;}
+        .box1{position: absolute;width:25%; height:auto;top: 0%; left: 0%;}
+        .box2{position: absolute;width:25%; height: auto;top: 0%; left: 25%; }
+        .box3{position: absolute; width:25%; height: auto; top: 0%; left: 50%;}
+        .box4{position: absolute;width:25%; height: auto; top: 0%; left: 75%; }   
+        span{font-family: sans-serif;font-weight: bolder;color: #080557;;}
+    </style>
+   <header>
+    <h1>無人機管理系統</h1>
+    <ul>
+        <li><a href="https://topologyuav.com:5003/DMange/DFSS/">即時資訊</a></li>
+        <li><a href="https://topologyuav.com:5003/DMange/DFproject/">飛行計畫</a></li>
+        <li><a href="https://topologyuav.com:5003/DMange/">上一頁</a></li>
+    </ul>
+    </header>
+    <article>
+        <div id="map">
+            <form method="post" action="/AMange/" hidden>    
+            </form> 
+        </div>
+        <section class="box1">
+            <nav id="data">
+                <span class="name1">無人機1</span>
+                <span>經度</span>   
+                <span>緯度</span>  
+                <span>高度</span> 
+            </nav>
+            <div id="map1" >
+                <form method="post" action="/AMange/" hidden>    
+                </form> 
+            </div>
+            <div id="rtspmovie">
+                <iframe id="fp_embed_player" src="https://wcs5-eu.flashphoner.com:8888/embed_player?urlServer=wss://wcs5-eu.flashphoner.com:8443&streamName=rtsp://59.120.184.126:8554/mystream&mediaProviders=WebRTC,Flash,MSE,WSPlayer&skin=dark&autoplay=true" 
+                width="100%" height="100%" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+            </div>
+        </section>
+
+        <section class="box2">
+            <nav id="data">
+                <span class="name2">無人機2</span>
+                <span>經度</span>   
+                <span>緯度</span>  
+                <span>高度</span> 
+            </nav>
+            <div id="map2">
+                <form method="post" action="/AMange/" hidden>    
+                </form> 
+            </div>
+            <div id="rtspmovie">
+                <iframe id="fp_embed_player" src="https://wcs5-eu.flashphoner.com:8888/embed_player?urlServer=wss://wcs5-eu.flashphoner.com:8443&streamName=rtsp://59.120.184.126:8554/mystream&mediaProviders=WebRTC,Flash,MSE,WSPlayer&skin=dark&autoplay=true" 
+                width="100%" height="100%" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+            </div>
+        </section>
+
+        <section class="box3">
+            <nav id="data">
+                <span class="name3">無人機3</span>
+                <span>經度</span>   
+                <span>緯度</span>  
+                <span>高度</span> 
+            </nav>
+            <div id="map3">
+                <form method="post" action="/AMange/" hidden>    
+                </form> 
+            </div>
+            <div id="rtspmovie">
+                <iframe id="fp_embed_player" src="https://wcs5-eu.flashphoner.com:8888/embed_player?urlServer=wss://wcs5-eu.flashphoner.com:8443&streamName=rtsp://59.120.184.126:8554/mystream&mediaProviders=WebRTC,Flash,MSE,WSPlayer&skin=dark&autoplay=true" 
+                width="100%" height="100%" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+            </div>
+        </section>
+
+        <section class="box4">
+            <nav id="data">
+                <span class="name4">無人機4</span>
+                <span>經度</span>   
+                <span>緯度</span>  
+                <span>高度</span> 
+            </nav>
+            <div id="map4">
+                <form method="post" action="/AMange/" hidden>    
+                </form> 
+            </div>
+            <div id="rtspmovie">
+                <iframe id="fp_embed_player" src="https://wcs5-eu.flashphoner.com:8888/embed_player?urlServer=wss://wcs5-eu.flashphoner.com:8443&streamName=rtsp://59.120.184.126:8554/mystream&mediaProviders=WebRTC,Flash,MSE,WSPlayer&skin=dark&autoplay=true" 
+                width="100%" height="100%" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+            </div>
+        </section>
+        
+
+    </article>
+    <script>
+        $(document).ready(function() {
+            var DFprojectlen = "{{DName_ls}}".replace("&#39;","").replace("[","").replace("&#39;","").replace("[","").replace("&#39;","").replace("]","").replace("(","").replace("(","").replace("&#39;","").replace("&#39;","").split(",");
+            for (i=0; i<DFprojectlen.length; i++){
+                if(i % 2 == 0){
+                    if (i == 0){
+                        $(".name1").empty();
+                        $(".name1").append('<span>'+DFprojectlen[0].replace("&#39;","").replace("(","").replace("&#39;","")+'<span>');}
+                    if (i == 2){
+                        $(".name2").empty();
+                        $(".name2").append('<span>'+DFprojectlen[2].replace("&#39;","").replace("(","").replace("&#39;","")+'<span>');}
+                    if (i == 4){
+                        $(".name3").empty();
+                        $(".name3").append('<span>'+DFprojectlen[4].replace("&#39;","").replace("(","").replace("&#39;","")+'<span>');}
+                    if (i == 6){ 
+                        $(".name4").empty();
+                        $(".name4").append('<span>'+DFprojectlen[6].replace("&#39;","").replace("(","").replace("&#39;","")+'<span>');}
+                    }
+            }
+        });
+    </script>
+    <script>
+        var map;
+        function initMaps() {
+            const LatLng = { lat: 24.802919070618568, lng:120.99921800849589 };
+            const flag1 = "https://topologyuav.com:5003/static/img/markerdrone1.ico";
+            const flag2 = "https://topologyuav.com:5003/static/img/markerdrone2.ico";
+            const flag3 = "https://topologyuav.com:5003/static/img/markerdrone3.ico";
+            const flag4 = "https://topologyuav.com:5003/static/img/markerdrone4.ico";
+            const mapOptions = {
+                zoom: 14,
+                center: LatLng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControl: false,
+                panControl: false,
+                zoomControl: true,
+                streetViewControl: false,
+            };
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            const marker1 = new google.maps.Marker({
+                position: { lat: 24.802919070618568, lng: 120.99921800849589 },
+                map: map,
+                icon: flag1,
+            });
+
+            const marker2 = new google.maps.Marker({
+                position: { lat: 24.805602018560645, lng: 120.97138613218738 },
+                map: map,
+                icon: flag2,
+            });
+
+            const marker3 = new google.maps.Marker({
+                position: { lat: 24.793324156731067, lng: 121.01338149470023 },
+                map: map,
+                icon: flag3,
+            });
+
+            const marker4 = new google.maps.Marker({
+                position: { lat: 24.80735052497929, lng: 121.04055536375117 },
+                map: map,
+                icon: flag4,
+            });
+        }
+            
+        window.onload = initMaps;
+    </script>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQpaIcpjQ85AS9Zh3BzyIlrF_uQCh0W2U&callback=initMaps&v=weekly" loading="lazy"
+    defer
+    ></script>
+   
+</body>
+</html>

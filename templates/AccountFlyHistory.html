@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Management</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <meta http-equiv='cache-control' content='no-store'>
+    <meta http-equiv='expires' content='no-store'>
+    <meta http-equiv='pragma' content='no-store'>
+</head>
+<body>
+    <style>
+        *{ margin: 0;padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
+        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        header{display: block;margin: auto;padding: 10px;}
+        header h1{color: aliceblue; font-size: 52px;display: inline-block;vertical-align: top;margin: 0 10px;}
+        header ul {  display: block;  text-align: right; float: right; font-size: 23px;  display: flex; list-style: none;  right: 5px; top: 10px;}
+        header li { background-color: rgba(256, 256, 256, 0.6); margin: 10px; top: 20px; padding: 5px; border-radius: 30%;}
+        header li a { color: #360ee7b7;text-decoration: none;}
+        header li a:hover { color: #0f2e29; font-weight: bolder;}
+        .ADetail{width: 90%;left:10%; position: absolute;}
+        #Account_Detail{margin: 0 5px; border:7px double #ece9e96b ; text-align: center;background-color: rgba(256, 256, 256, 0.5);}
+        th{font-size: 36px; border: #0e0d0d 3px solid ; padding: 5px 8px; margin: 0 10px 0 0;}
+        .Flight_total{text-align: center;  background-color: #301f7a5d;color: #ffffff98; }
+        tbody{background-color: rgba(256, 256, 256, 0.4);}
+        #Finish_data{background-color: #b4b0b05b;color: #040350;}
+        td{padding: 4px 0; font-size: 24px; border: 3px solid #0e0d0d; text-align: center; }
+    </style>
+    <header>
+        <h1>帳戶管理系統</h1>
+        <ul>
+            <li><a href="https://topologyuav.com:5003/AMange/Dinfo/">機體資訊</a></li> 
+            <li><a href="https://topologyuav.com:5003/AMange/DFRecord/">飛行紀錄</a></li> 
+            <li><a href="https://topologyuav.com:5003/AMange/">上一頁</a></li>     
+        </ul>
+    </header>
+    <section class="ADetail">
+        <table id="Account_total" frame="border" rules="all">
+            <thead class="Flight_total" rules="all" cellpadding='5'>
+                <th>飛行總里程</th>
+                <td colspan="1"></td>
+                <th>飛行總時長</th>
+                <td colspan="1"></td>
+                <th>飛行總次數</th>
+                <td colspan="1"></td>
+            </thead>
+            <tbody>
+                <tr id="Finish_data"frame="box" cellpadding='5'>
+                    <th>飛行日期</th>
+                    <th>起飛時間</th>
+                    <th>飛行地點</th>
+                    <th>任務名稱</th>
+                    <th>里程</th>
+                    <th>時長</th>
+                </tr>
+                <tr>
+                    <td>2023/03/31</td>
+                    <td>14:00:05</td>
+                    <td>新竹</td>
+                    <td>project1</td>
+                    <td>35m</td>
+                    <td>10min</td>
+                </tr>  
+                <tr>
+                    <td>2023/07/31</td>
+                    <td>15:00:05</td>
+                    <td>新竹</td>
+                    <td>project2</td>
+                    <td>50m</td>
+                    <td>30min</td>
+                </tr>  
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>

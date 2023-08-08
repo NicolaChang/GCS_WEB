@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Planning</title>
+    <scrip src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta http-equiv='cache-control' content='no-store'>
+    <meta http-equiv='expires' content='no-store'>
+    <meta http-equiv='pragma' content='no-store'>
+</head>
+<body>
+    <style>
+        *{ margin: 0;padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
+        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        header{display: block;margin: auto;padding: 10px;}
+        header h1{color: aliceblue; font-size: 52px;display: inline-block;vertical-align: top;margin: 0 10px;}
+        header ul {  display: block;  text-align: right; float: right; font-size: 23px;  display: flex; list-style: none; right: 5px; top: 10px;}
+        header li { background-color: rgba(256, 256, 256, 0.6); margin: 10px; top: 20px; padding: 5px; border-radius: 30%;}
+        header li a { color: #360ee7b7;text-decoration: none;}
+        header li a:hover { color: #0f2e29; font-weight: bolder;}
+        article{ position: relative;}
+        nav{ position: absolute; width: 8%; }
+        #Mmap{ position: absolute; width:87%; height: 600px; top: 10px;}
+        #Flightplan{position: absolute; top: 0%; right: 1%; border:7px double #ece9e96b; text-align: center;}   
+        .Flightplans{font-size: 26px; color: #191a57;background-color: rgb(195, 220, 235,0.8); }
+        .Flightplans:hover{color: #6118b4;}
+        a{ text-decoration: none; color: #191a57;}
+        a:hover{color: #6118b4;}
+        .setting{ position: absolute; top: 0%; left: 0%;background-color: rgba(256, 256, 256, 0.8); color: rgb(29, 3, 78); margin: 10px; width: 120%;}
+        td{font-size: 20px; padding:8px 5px; border: rgba(92, 90, 90, 0.534) 1px solid;}
+        
+    </style>
+    <header>
+        <h1>任務規劃系統</h1>
+        <ul>
+            <li><a href="https://topologyuav.com:5003/MMange/">上一頁</a></li>   
+            <li><a href="https://topologyuav.com:5003/Logout/">登出</a></li>    
+        </ul>
+    </header>
+    <article>
+        <section>
+            <div id="Mmap"></div>
+            <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQpaIcpjQ85AS9Zh3BzyIlrF_uQCh0W2U&callback=MMap1&v=weekly"
+                defer
+            ></script>
+        </section>
+        <section>
+            <table id="Flightplan">
+                <tr><td class="Flightplans"><a href="https://topologyuav.com:5003/MMange/RPlanning">飛行計畫</a></td></tr>
+                <tr><td class="Flightplans">預覽飛行</td></tr>
+                <tr><td class="Flightplans">任務儲存</td></tr>
+            </table>
+        </section>
+        <nav>
+            <table class="setting">
+                <tr><td>頭向設定</td></tr>
+                <tr><td>角度</td></tr>
+                <tr><td>速度</td></tr>
+                <tr><td>正向重疊</td></tr>
+                <tr><td>側向重疊</td></tr>
+                <tr><td>單位</td></tr>
+                <tr><td>同步設定</td></tr>
+                <tr><td>飛行高度</td></tr>
+                <tr><td>建立任務點</td></tr>
+            </table>
+        </nav>
+    </article> 
+    <script>
+        function MMap() {
+            const LatLng = { lat: 24.802919070618568, lng:120.99921800849589 };
+            const map = new google.maps.Map(document.getElementById("Mmap"), {
+            zoom: 15,
+            center: LatLng,
+            });
+        
+            new google.maps.Marker({
+            position: LatLng,
+            map: map,
+            });
+        }
+        window.onload = MMap;
+    </script>
+    
+</body>
+</html>

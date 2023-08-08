@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"  rel="stylesheet">
+    <meta http-equiv='cache-control' content='no-store'>
+    <meta http-equiv='expires' content='no-store'>
+    <meta http-equiv='pragma' content='no-store'>
+</head>
+<body>
+    <style>
+        *{margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
+        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        header{ z-index: -2; background-position: right center;}
+        .login{ text-align: center; align-items:center; justify-content:center; position: absolute; top:8%; left: 20%; z-index: 10;  padding: 0 20px;}
+        h1{color: aliceblue; font-size: 40px; text-align: center; margin: 30px 20px; padding: 20px; bottom: 20%;} 
+        input{ opacity: 0.5; font-size: 22px; }
+        #signin,#register{ float: right; padding: 10px 15px; margin: 40px 40px; opacity: 1;background-color: rgba(256, 256, 256, 0.8);border-radius: 15%;}
+        @media screen and (max-width: 1200px) and (min-width:769px) {
+            header{width:1200px; position: relative;} .login{ position: absolute;z-index: 10; width: 70%;top: 2%;left: 4%;}
+            h1{ font-size: 36px; bottom: 20%; } 
+            input{z-index: 99;font-size: 24px; width: auto;text-align: center}
+            .buttons{float: right; position: absolute; right: 30%;}
+            #signin,#register{font-size: 28px;text-align: center; padding: 15px 15px; margin: 35px 30px 0 0;}
+        }
+        @media screen and (max-width: 720px) {
+            body{display: flex;justify-content: center;}
+            header{ z-index: -2; width: 360px; height: 640px;position: relative;}
+            .login{ position: absolute;z-index: 10; width: 70%;top: 10%;left: 8%;}
+            h1{ font-size: 36px; bottom: 20%; } 
+            input{z-index: 99; font-size: 18px; width: auto;text-align: center}
+            #signin,#register{font-size: 18px; text-align: center; padding: 5px; margin: 10px;}
+        } 
+    </style>
+    <header>
+        <div class="login" >
+            <form action="/Logout/" method="post">
+                <h1>確定要離開無人機管理系統?</h1>
+                <div class="buttons">
+                    <a href="https://topologyuav.com:5003/Login/"><input id="signin" name="response" type="submit" value="確認"></a>
+                    <a href="https://topologyuav.com:5001DMange/"> <input id="register"name="response" type="submit" value="返回系統"></a>
+                </div>
+            </form>    
+        </div>
+    </header>
+</body>
+</html>
