@@ -32,7 +32,7 @@
 * requirements.txt：已安裝之套件清單
 
 ### 基本設定
-* 虛擬環境名稱：GCSWEB：
+* 虛擬環境名稱 GCSWEB：
   * `登入Putty->切換資料夾 cd Desktop/->切換虛擬環境 source GCSWEB/bin/activate ->進入檔案存放資料夾 cd env-wra/try-data/hjweb/GCSWeb/ ->輸入執行程式碼：python3 app.py，即可執行APP`
 * DNS：https://topologyuav.com:5002/Login/
 * 測試帳號密碼：
