@@ -38,4 +38,4 @@
 * 測試帳號密碼：
   * `帳號：test00@gmail.com (已內建一台無人機可做數據顯示測試)、密碼：Zxc123123`
 * RTSP串流影像指令：
-  *  ‵raspivid -t 0 -w 1280 -h 720 -fps 15 -g 75 -fl -o - | ffmpeg -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -i pipe:0 -c:v copy -c:a aac -strict experimental -f rtsp -rtsp_transport tcp rtsp://59.120.184.126:8554/mystream`
+  * `raspivid -t 0 -w 1280 -h 720 -fps 15 -g 75 -fl -o - | ffmpeg -f lavfi -i anullsrc=channel_layout=stereo:sample_rate=44100 -i pipe:0 -c:v copy -c:a aac -strict experimental -f rtsp -rtsp_transport tcp rtsp://59.120.184.126:8554/mystream`
