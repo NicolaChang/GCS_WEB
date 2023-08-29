@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # topology-back
 # 簡介
 Topology GCS 網站，該網站功能為讓使用者可以隨時觀看無人機上的直播影片、飛行資料等。
@@ -55,3 +56,6 @@ Werkzeug==2.2.3
 
 可參考[此檔案](https://docs.google.com/presentation/d/1SUw9Zk8-8PQJUEiGDZvI6HTvSqwyC5VbsB8AgaBF7c0/edit#slide=id.g24f2fef54e4_0_18)
 就能用視覺化的方式看各參數
+=======
+# GCS_WEB
+>>>>>>> 612be7ed388f4ea976b7a7fe858f8b55c1381b7f
