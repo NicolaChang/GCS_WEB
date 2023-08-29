@@ -1,13 +1,13 @@
-# 20230829 網站滲透測試
+# 20230829 
 
-## 網頁版檔案名稱及基本功能說明
+## 網站滲透測試檔案說明
 ### 資料夾名稱說明：
 * static：圖片檔及JQ插入檔
 * templates：HTML程式檔
 
-### 檔案名稱說明：
+### 檔案名稱及基本功能說明：
 * app.py：程式執行檔
-* register.html：註冊頁面
+* register.html：註冊頁面 __
 * login.html：登入頁面
 * privacy.html：隱私權聲明頁面
 * Management.html：三大功能選擇頁面
