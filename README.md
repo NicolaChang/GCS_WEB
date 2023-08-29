@@ -35,3 +35,5 @@
 * 虛擬環境名稱：GCSWEB：
   * `登入Putty->切換資料夾 cd Desktop/->切換虛擬環境 source GCSWEB/bin/activate ->進入檔案存放資料夾 cd env-wra/try-data/hjweb/GCSWeb/ ->輸入執行程式碼：python3 app.py，即可執行APP`
 * DNS：https://topologyuav.com:5002/Login/
+* 測試帳號密碼：
+  * `帳號：test00@gmail.com (已內建一台無人機可做數據顯示測試)、密碼：Zxc123123`
