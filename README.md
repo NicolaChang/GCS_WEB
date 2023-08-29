@@ -1,8 +1,7 @@
-# 20230829 
+# 20230829 網站滲透測試
 
 ## 網頁版檔案名稱及基本功能說明
 ### 資料夾名稱說明：
-* mysql：資料庫檔案
 * static：圖片檔及JQ插入檔
 * templates：HTML程式檔
 
@@ -28,6 +27,11 @@
 * MissionReview.html：建立任務名稱頁面
 * MissionSet.html：任務規劃頁面
 * logout.html：登出介面
-* fullchain.pem：
-* privkey.pem：
+* fullchain.pem：SSL憑證
+* privkey.pem：SSL憑證
 * requirements.txt：已安裝之套件清單
+
+###基本設定
+* 虛擬環境名稱：GCSWEB
+** 登入Putty->切換資料夾 cd Desktop/->切換虛擬環境 source GCSWEB/bin/activate ->進入檔案存放資料夾 cd env-wra/try-data/hjweb/GCSWeb/ ->輸入執行程式碼：python3 app.py，即可執行APP
+* DNS：https://topologyuav.com:5002/Login/
