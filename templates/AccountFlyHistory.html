@@ -13,14 +13,14 @@
 <body>
     <style>
         *{ margin: 0;padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
-        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        body{background-image: url(https://topologyuav.com:5002/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
         header{display: block;margin: auto;padding: 10px;}
         header h1{color: aliceblue; font-size: 52px;display: inline-block;vertical-align: top;margin: 0 10px;}
         header ul {  display: block;  text-align: right; float: right; font-size: 23px;  display: flex; list-style: none;  right: 5px; top: 10px;}
         header li { background-color: rgba(256, 256, 256, 0.6); margin: 10px; top: 20px; padding: 5px; border-radius: 30%;}
         header li a { color: #360ee7b7;text-decoration: none;}
         header li a:hover { color: #0f2e29; font-weight: bolder;}
-        .ADetail{width: 90%;left:10%; position: absolute;}
+        .ADetail{display: flex; justify-content: center; align-items: center; height: 50vh;}
         #Account_Detail{margin: 0 5px; border:7px double #ece9e96b ; text-align: center;background-color: rgba(256, 256, 256, 0.5);}
         th{font-size: 36px; border: #0e0d0d 3px solid ; padding: 5px 8px; margin: 0 10px 0 0;}
         .Flight_total{text-align: center;  background-color: #301f7a5d;color: #ffffff98; }
@@ -31,9 +31,11 @@
     <header>
         <h1>帳戶管理系統</h1>
         <ul>
-            <li><a href="https://topologyuav.com:5003/AMange/Dinfo/">機體資訊</a></li> 
-            <li><a href="https://topologyuav.com:5003/AMange/DFRecord/">飛行紀錄</a></li> 
-            <li><a href="https://topologyuav.com:5003/AMange/">上一頁</a></li>     
+            <li><a href="https://topologyuav.com:5002/Mange/">首頁</a></li>
+            <li><a href="https://topologyuav.com:5002/MangeAT/">機隊管理</a></li> 
+            <li><a href="https://topologyuav.com:5002/AMange/Dinfo/">機體資訊</a></li> 
+            <li><a href="https://topologyuav.com:5002/AMange/DFRecord/">飛行紀錄</a></li> 
+            <li><a href="https://topologyuav.com:5002/AMange/">上一頁</a></li>     
         </ul>
     </header>
     <section class="ADetail">

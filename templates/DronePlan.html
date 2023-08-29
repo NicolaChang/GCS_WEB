@@ -14,7 +14,7 @@
 <body>
     <style>
         *{ margin: 0;padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
-        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png);display: block;margin: auto;padding: 10px;z-index: 99;background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        body{background-image: url(https://topologyuav.com:5002/static/img/BGimage.png);display: block;margin: auto;padding: 10px;z-index: 99;background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
         header h1{color: aliceblue;font-size: 52px;display: inline-block;vertical-align: top;margin: 0 10px; }
         header ul {  display: block;  text-align: right; float: right; font-size: 23px;  display: flex; list-style: none; right: 5px; top: 10px;}
         header li { background-color: rgba(256, 256, 256, 0.5); margin: 10px; top: 15px; padding: 5px; border-radius: 30%;}
@@ -38,9 +38,10 @@
     <header>
         <h1>無人機管理系統</h1>
         <ul>
-            <li><a href="https://topologyuav.com:5003/DMange/DFSS/">即時資訊</a></li>
-            <li><a href="https://topologyuav.com:5003/DMange/DFSwitch/">多重視角</a></li>
-            <li><a href="https://topologyuav.com:5003/DMange/">上一頁</a></li>
+            <li><a href="https://topologyuav.com:5002/Mange/">首頁</a></li>
+            <li><a href="https://topologyuav.com:5002/DMange/DFSS/">即時資訊</a></li>
+            <li><a href="https://topologyuav.com:5002/DMange/DFSwitch/">多重視角</a></li>
+            <li><a href="https://topologyuav.com:5002/DMange/">上一頁</a></li>
         </ul>
     </header>
     <article>
@@ -57,10 +58,10 @@
         <section>
             <form  method="post" action="/DMange/DFproject/">
                 <div id="Drones">
-                    <img class="upload" src="https://topologyuav.com:5003/static/img/Dupdate.png" alt="任務上傳">
-                    <img class="Droneimg" src="https://topologyuav.com:5003/static/img/Drone.png" alt="無人機">
+                    <img class="upload" src="https://topologyuav.com:5002/static/img/Dupdate.png" alt="任務上傳">
+                    <img class="Droneimg" src="https://topologyuav.com:5002/static/img/Drone.png" alt="無人機">
                     <h3 name="DName_ls" value="">無人機名稱</h3>
-                    <img class="connect" src="https://topologyuav.com:5003/static/img/Dconnect.png" alt="連線符號">
+                    <img class="connect" src="https://topologyuav.com:5002/static/img/Dconnect.png" alt="連線符號">
                 </div>
             </form>
         </section>
@@ -75,10 +76,10 @@
             for (i=0; i<DFprojectlen.length; i++){
                 if(i % 2 == 0){
                     $("#Drones").append('<div id="Drone">'+
-                        '<img class="upload" src="https://topologyuav.com:5003/static/img/Dupdate.png" alt="任務上傳">'+
-                        '<img class="Droneimg" src="https://topologyuav.com:5003/static/img/Drone.png" alt="無人機">'+
+                        '<img class="upload" src="https://topologyuav.com:5002/static/img/Dupdate.png" alt="任務上傳">'+
+                        '<img class="Droneimg" src="https://topologyuav.com:5002/static/img/Drone.png" alt="無人機">'+
                         '<h3 id="Dronename">'+DFprojectlen[i].replace("&#39;","").replace("[","").replace("&#39;","").replace("]","").replace("(","")+'</h3>'+
-                        '<img class="connect" src="https://topologyuav.com:5003/static/img/Dconnect.png" alt="連線符號">'+'</div>');}
+                        '<img class="connect" src="https://topologyuav.com:5002/static/img/Dconnect.png" alt="連線符號">'+'</div>');}
             }
             if (DFprojectlen[0] == '(&#39;'){
                 $("section").empty();
@@ -98,15 +99,10 @@
         })
     </script>
     <script>
-        // 可选，可以在JavaScript中设置默认选中项
-        // document.getElementById("option1").checked = true;
-
-        // 可选，可以通过以下方式监听选择变化
         var radioButtons = document.getElementsByName("CB");
         radioButtons.forEach(function (radio) {
             radio.addEventListener("change", function () {
-                // 处理选择变化的逻辑
-                console.log("选中的值是：" + this.value);
+                console.log("選中的值是：" + this.value);
             });
         });
     </script>

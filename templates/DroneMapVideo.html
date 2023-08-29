@@ -15,7 +15,7 @@
 <body>
     <style>
         *{ margin: 0;padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
-        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png);display: block;margin: auto;padding: 10px;z-index: 99;background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        body{background-image: url(https://topologyuav.com:5002/static/img/BGimage.png);display: block;margin: auto;padding: 10px;z-index: 99;background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
         header h1{color: aliceblue;font-size: 52px;display: inline-block;vertical-align: top;margin: 0 10px; }
         header ul {  display: block;  text-align: right; float: right; font-size: 23px;  display: flex; list-style: none; right: 5px; top: 10px;}
         header li { background-color: rgba(256, 256, 256, 0.5); margin: 10px; top: 15px; padding: 5px; border-radius: 30%;}
@@ -54,9 +54,10 @@
     <header>
         <h1>無人機管理系統</h1>
         <ul>
-            <li><a href="https://topologyuav.com:5003/DMange/DFproject/">飛行計畫</a></li>
-            <li><a href="https://topologyuav.com:5003/DMange/DFSwitch/">多重視角</a></li>
-            <li><a href="https://topologyuav.com:5003/DMange/">上一頁</a></li>
+            <li><a href="https://topologyuav.com:5002/Mange/">首頁</a></li>
+            <li><a href="https://topologyuav.com:5002/DMange/DFproject/">飛行計畫</a></li>
+            <li><a href="https://topologyuav.com:5002/DMange/DFSwitch/">多重視角</a></li>
+            <li><a href="https://topologyuav.com:5002/DMange/">上一頁</a></li>
         </ul>
     </header>
     <section id="Dmap">
@@ -68,9 +69,7 @@
             </form>
         </div>
         <div id="map_canvas" >
-            <form method="post" action="/AMange/" hidden>
-                    
-            </form> 
+            <form method="post" action="/AMange/" hidden></form> 
         </div>
         <div id="MV">
             <iframe id="fp_embed_player" src="https://wcs5-eu.flashphoner.com:8888/embed_player?urlServer=wss://wcs5-eu.flashphoner.com:8443&streamName=rtsp://59.120.184.126:8554/mystream&mediaProviders=WebRTC,Flash,MSE,WSPlayer&skin=dark&autoplay=true" 
@@ -81,12 +80,13 @@
         //地圖
         var marker;
         var map;
-        var markers = []; // 存儲標記的數組
-        var pathCoordinates = []; // 存儲軌跡經緯度數據的數組
+        var markers = []; 
+        var pathCoordinates = []; 
+        var image = "https://topologyuav.com:5002/static/img/dronemin.ico";
+        var flag = "https://topologyuav.com:5002/static/img/flag.png";
 
         function initMaps() {
             const LatLng = { lat: 24.802919070618568, lng:120.99921800849589 };
-            const image = "https://topologyuav.com:5003/static/img/dronemin.ico";
             map = new google.maps.Map(document.getElementById("map_canvas"), {
                 zoom: 20,
                 center: LatLng,
@@ -100,10 +100,25 @@
                 position: LatLng,
                 map: map,
                 icon: image,
-            }); 
+            });
+            var droneNoFlyZoneCoords = [
+            {lat: 25.1, lng: 121.6},
+            {lat: 25.2, lng: 121.6},
+            {lat: 25.2, lng: 121.7},
+            {lat: 25.1, lng: 121.7},
+            {lat: 25.1, lng: 121.6}
+            ];
+            var droneNoFlyZone = new google.maps.Polygon({
+            paths: droneNoFlyZoneCoords,
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35
+            });
+            droneNoFlyZone.setMap(map); 
             updateMarker();
         }  
-        
         function updateMarker() {
             var socket = io.connect(); 
             var data = (['HJUAV001@gmail.com','drone_uuid'],['HJUAV002@gmail.com','drone_uuid'],['HJUAV003@gmail.com','drone_uuid'],
@@ -115,16 +130,34 @@
                 console.log("Location",LatLng)
                 map.setCenter(marker.setPosition(LatLng));
                 markers.push(marker);
-                pathCoordinates.push(marker.getPosition());
+                pathCoordinates.push(marker.getPosition(LatLng));
+                drawPath();
             })   
-            setInterval(updateMarker, 5000);
         }
+        function drawPath() {
+            var path = new google.maps.Polyline({
+            path: pathCoordinates,
+            geodesic: true,
+            strokeColor: "#FF0000",
+            strokeOpacity: 1.0,
+            strokeWeight: 5,
+            firstMarker : new google.maps.Marker({
+                position: pathCoordinates[0],
+                map: map,
+                icon: flag
+                }),
+            });
+            path.setMap(map);
+        }
+
         window.onload = initMaps;
     </script> 
     <script>
         //FlightData
         var all_ls = "{{all_ls}}";
-        var droneName = "{{DName_ls}}".replaceAll("(","").replaceAll(")","").replaceAll("&#39;","").replaceAll("[","").replaceAll("]","").split(",");
+        var urlParams = new URLSearchParams(window.location.search);
+        var dronename = urlParams.get('name');
+        var droneArray = dronename.split(' ');
         $(document).ready(function () {
             var socket = io.connect(); 
             $("#menu_detail").ready(function (e) {
@@ -133,13 +166,21 @@
                 socket.emit('MQTT_flydata',data)  
                 socket.on('MQTT_flydataR',function (all_ls)
                 {  
-                    $('#menu_detail').empty();
-                    $('#menu_detail').append("<tr>"+'<td>'+"無人機名稱:"+'<br>'+droneName[0]+"</td>"+'</tr>');
-                    $('#menu_detail').append("<tr>"+'<td>'+"流水號:"+'<br>'+droneName[1]+"</td>"+'</tr>');
+                    console.log("FlightData",all_ls['Time'])
+                    if (droneArray[0] == ""){
+                        $('#menu_detail').empty();
+                        $('#menu_detail').append("<tr>"+'<td>'+"無人機名稱:"+droneArray[1]+"</td>"+'</tr>');
+                        $('#menu_detail').append("<tr>"+'<td>'+"流水號:"+'<br>'+droneArray[2]+"</td>"+'</tr>');
+                    }
+                    else{
+                        $('#menu_detail').empty();
+                        $('#menu_detail').append("<tr>"+'<td>'+"無人機名稱:"+droneArray[0]+"</td>"+'</tr>');
+                        $('#menu_detail').append("<tr>"+'<td>'+"流水號:"+'<br>'+droneArray[1]+"</td>"+'</tr>');
+                    }
                     $('#menu_detail').append("<tr>"+'<td>'+"時間:"+'<br>'+all_ls['Time']+"</td>"+'</tr>');
-                    $('#menu_detail').append("<tr>"+'<td>'+"飛行模式:"+'<br>'+all_ls['Flight_Mode']+"</td>"+'</tr>');
-                    $('#menu_detail').append("<tr>"+'<td>'+"任務名稱:"+'<br>'+all_ls['mission']+"</td>"+'</tr>');
-                    $('#menu_detail').append("<tr>"+'<td>'+"電壓:"+'<br>'+all_ls['Vcc']+"</td>"+'</tr>');
+                    // $('#menu_detail').append("<tr>"+'<td>'+"飛行模式:"+'<br>'+all_ls['Flight_Mode']+"</td>"+'</tr>');
+                    // $('#menu_detail').append("<tr>"+'<td>'+"任務名稱:"+'<br>'+all_ls['mission']+"</td>"+'</tr>');
+                    $('#menu_detail').append("<tr>"+'<td>'+"電壓:"+all_ls['Vcc']+"</td>"+'</tr>');
                     $('#menu_detail').append("<tr>"+'<td>'+"經度:"+'<br>'+all_ls['lon']+"</td>"+'</tr>');
                     $('#menu_detail').append("<tr>"+'<td>'+"緯度:"+'<br>'+all_ls['lat']+"</td>"+'</tr>');
                     $('#menu_detail').append("<tr>"+'<td>'+"高度:"+'<br>'+all_ls['alt']+"</td>"+'</tr>');
@@ -148,42 +189,9 @@
                     $('#menu_detail').append("<tr>"+'<td>'+"頭向角度:"+'<br>'+all_ls['YAW']+"</td>"+'</tr>');
                     $('#menu_detail').append("<tr>"+'<td>'+"地面相對速度:"+'<br>'+all_ls['groud_speed']+"</td>"+'</tr>');
                     $('#menu_detail').append("<tr>"+'<td>'+"垂直速度:"+'<br>'+all_ls['Vertical_speed']+"</td>"+'</tr>');
-                    }
-                )   
+                })       
             });
         });     
-        setInterval("fresh()",1000);    
-    </script>
-    <script>
-        function fresh() {
-            var socket = io.connect(); 
-            $("#menu_detail").ready(function (e) {
-                var data = (['HJUAV001@gmail.com','drone_uuid'],['HJUAV002@gmail.com','drone_uuid'],['HJUAV003@gmail.com','drone_uuid'],
-                    ['HJUAV004@gmail.com','drone_uuid'],['HJUAV005@gmail.com','drone_uuid'],['CC@gmail.com','drone_uuid'],['test00@gmail.com','drone_uuid']);
-                socket.emit('MQTT_flydata',data)  
-                socket.on('MQTT_flydataR',function (all_ls)
-                {
-                    console.log("freshData",all_ls['Time']);   
-                    $('.DFdataBox').each(function() {
-                        $('#menu_detail').empty();
-                        $('#menu_detail').append("<tr>"+'<td>'+"無人機名稱:"+'<br>'+droneName[0]+"</td>"+'</tr>');
-                        $('#menu_detail').append("<tr>"+'<td>'+"流水號:"+'<br>'+droneName[1]+"</td>"+'</tr>');
-                        $('#menu_detail').append("<tr>"+'<td>'+"時間:"+'<br>'+all_ls['Time']+"</td>"+'</tr>');
-                        $('#menu_detail').append("<tr>"+'<td>'+"飛行模式:"+'<br>'+all_ls['Flight_Mode']+"</td>"+'</tr>');
-                        $('#menu_detail').append("<tr>"+'<td>'+"任務名稱:"+'<br>'+all_ls['mission']+"</td>"+'</tr>');
-                        $('#menu_detail').append("<tr>"+'<td>'+"電壓:"+'<br>'+all_ls['Vcc']+"</td>"+'</tr>');
-                        $('#menu_detail').append("<tr>"+'<td>'+"經度:"+'<br>'+all_ls['lon']+"</td>"+'</tr>');
-                        $('#menu_detail').append("<tr>"+'<td>'+"緯度:"+'<br>'+all_ls['lat']+"</td>"+'</tr>');
-                        $('#menu_detail').append("<tr>"+'<td>'+"高度:"+'<br>'+all_ls['alt']+"</td>"+'</tr>');
-                        $('#menu_detail').append("<tr>"+'<td>'+"GPS Mode:"+'<br>'+all_ls['GPS_FIX']+"</td>"+'</tr>');
-                        $('#menu_detail').append("<tr>"+'<td>'+"當前衛星數量:"+'<br>'+all_ls['Satellites_visible']+"</td>"+'</tr>');
-                        $('#menu_detail').append("<tr>"+'<td>'+"頭向角度:"+'<br>'+all_ls['YAW']+"</td>"+'</tr>');
-                        $('#menu_detail').append("<tr>"+'<td>'+"地面相對速度:"+'<br>'+all_ls['groud_speed']+"</td>"+'</tr>');
-                        $('#menu_detail').append("<tr>"+'<td>'+"垂直速度:"+'<br>'+all_ls['Vertical_speed']+"</td>"+'</tr>');   
-                    });
-                });
-            });
-        };   
     </script>
     <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQpaIcpjQ85AS9Zh3BzyIlrF_uQCh0W2U&callback=initMaps&v=weekly" loading="lazy"

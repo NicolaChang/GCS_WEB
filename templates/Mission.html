@@ -13,7 +13,7 @@
 <body>
     <style>
         *{ margin: 0;padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
-        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        body{background-image: url(https://topologyuav.com:5002/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
         header{display: block;margin: auto;padding: 10px;}
         header h1{color: aliceblue; font-size: 52px;display: inline-block;vertical-align: top;margin: 0 10px;}
         header ul {  display: block;  text-align: right; float: right; font-size: 23px;  display: flex; list-style: none; right: 5px; top: 10px;}
@@ -35,21 +35,21 @@
     <header>
         <h1>任務規劃系統</h1>
         <ul>
-            <li><a href="https://topologyuav.com:5003/Mange/">返回</a></li> 
-            <li><a href="https://topologyuav.com:5003/Logout/">登出</a></li>    
+            <li><a href="https://topologyuav.com:5002/Mange/">首頁</a></li>
+            <li><a href="https://topologyuav.com:5002/Logout/">登出</a></li>    
         </ul>
     </header>
     <article>
         <nav class="plan">
-            <button onclick="showMission()"><img class="planA" width="80px" height="80px" src="https://topologyuav.com:5003/static/img/Mpolygon.png" alt="多邊形"></button>
-            <button onclick="showMission()"><img class="planA" width="80px" height="80px" src="https://topologyuav.com:5003/static/img/Mgrid.png" alt="網格"></button>
-            <button onclick="showMission()"><img class="planA" width="80px" height="80px" src="https://topologyuav.com:5003/static/img/Mgrids.png" alt="雙網格"></button>
-            <button onclick="showMission()"><img class="planA" width="80px" height="80px" src="https://topologyuav.com:5003/static/img/Maround.png" alt="繞圓環拍"></button>
-            <button onclick="showMission()"><img class="planA" width="80px" height="80px" src="https://topologyuav.com:5003/static/img/MFreeFlight.png" alt="自由飛行"></button>     
+            <button onclick="showMission()"><img class="planA" width="80px" height="80px" src="https://topologyuav.com:5002/static/img/Mpolygon.png" alt="多邊形"></button>
+            <button onclick="showMission()"><img class="planA" width="80px" height="80px" src="https://topologyuav.com:5002/static/img/Mgrid.png" alt="網格"></button>
+            <button onclick="showMission()"><img class="planA" width="80px" height="80px" src="https://topologyuav.com:5002/static/img/Mgrids.png" alt="雙網格"></button>
+            <button onclick="showMission()"><img class="planA" width="80px" height="80px" src="https://topologyuav.com:5002/static/img/Maround.png" alt="繞圓環拍"></button>
+            <button onclick="showMission()"><img class="planA" width="80px" height="80px" src="https://topologyuav.com:5002/static/img/MFreeFlight.png" alt="自由飛行"></button>     
         </nav>
         <section>
             <table id="Flight">
-                <th><a href="https://topologyuav.com:5003/MMange/RPlanning">飛行計畫</a></th>
+                <th><a href="https://topologyuav.com:5002/MMange/RPlanning">飛行計畫</a></th>
                 <!-- <th class="FlightPlan">預覽飛行</th> -->
             </table>
         </section>
@@ -65,7 +65,7 @@
     <script>
         function MMap() {
             const LatLng = { lat: 24.802919070618568, lng:120.99921800849589 };
-            const image = "https://topologyuav.com:5003/static/img/dronemin.ico";
+            const image = "https://topologyuav.com:5002/static/img/dronemin.ico";
             const map = new google.maps.Map(document.getElementById("Mmap"), {
             zoom: 18,
             center: LatLng,
@@ -90,7 +90,7 @@
             var mission = window.prompt('建立任務', '請輸入任務名稱');
             if (mission == null || "") {     
             } else {
-                window.location.href='https://topologyuav.com:5003/MMange/Planning';
+                window.location.href='https://topologyuav.com:5002/MMange/Planning';
             }
         }
     </script>

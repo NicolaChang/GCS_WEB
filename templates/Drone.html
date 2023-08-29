@@ -16,41 +16,41 @@
 <body>
     <style>
         *{ margin: 0;padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
-        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        body{background-image: url(https://topologyuav.com:5002/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
         header{display: block;margin: auto;padding: 10px;}
         header h1{color: aliceblue; font-size: 52px;display: inline-block;vertical-align: top;margin: 0 10px;}
         header ul {  display: block;  text-align: right; float: right; font-size: 23px;  display: flex; list-style: none; right: 5px; top: 10px;}
         header li { background-color: rgba(256, 256, 256, 0.6); margin: 10px; top: 20px; padding: 5px; border-radius: 30%;}
         header li a { color: #360ee7b7;text-decoration: none;}
         header li a:hover { color: #0f2e29; font-weight: bolder;}
-        form #Drones > div {background-color: #d2dad2;margin: 15px 5px 10px 10px;width: 300px;height: 300px;text-align: center;float: left;border-radius: 25%;background-color: rgba(256, 256, 256, 0.5);}
+        form #Drones > div {background-color: #d2dad2; margin: 10px 5px 15px 15px; width: 300px;height: 300px;text-align: center;float: left;border-radius: 25%;background-color: rgba(256, 256, 256, 0.5);}
         form #Drones > div:hover{transform: scale(1,1.05);}
         h3{color: aliceblue; font-size: 30px; text-align: center; margin: 0 0 5px 0;}
         a{text-decoration: none; color: black;}
         #ADimg,#Drone_img{margin: 15px 0 ; width:200px; height:200px;}
-        section{ flex-wrap: nowrap;}
-        #Droneadd{ background-color: #dad9d9;margin: 15px 5px; ;padding:20px 0 0 0; width: 300px;height: 280px;text-align: center;float: left;border-radius: 25%;background-color: rgba(256, 256, 256, 0.5);}
+        section{ flex-wrap: nowrap; margin: 15px 15px 10px 10px;}
+        #Droneadd{ background-color: #dad9d9; padding:20px 0 0 0; margin: 15px 5px; width: 300px;height: 280px;text-align: center;float: left;border-radius: 25%;background-color: rgba(256, 256, 256, 0.5);}
         @media screen and (max-width: 1200px) and (min-width:769px) {
             header h1{ font-size: 26px;display: inline-block;vertical-align: top;margin: 0 0 0 -5px;}
             form #Drones > div {margin: 15px 5px;width: 170px;height:170px;text-align: center;float: left; border-radius: 25%;position: relative; }
             div h3{color: rgb(2, 27, 49); font-size: 20px; text-align: center; margin: 0 0 5px 0;}
             div #ADimg{margin: 15px 0 ; width:100px; height:100px;}
-            #Droneadd{margin: 15px 5px;width: 165px;height:150px;text-align: center;float: left; border-radius: 25%;}
-            .add_drone{margin: 10px 0 ; width:120px; height:120px;}    
+            #Droneadd{width: 165px;height:150px; }
+            .add_drone{width:120px; height:120px;}    
         }@media screen and (max-width: 720px) {
             header h1{color: aliceblue; font-size: 26px;display: inline-block;vertical-align: top;margin: 0 0 0 -5px;}
             form #Drones > div {margin: 15px 5px;width: 170px;height:170px;position: relative; }
             div h3{color: rgb(2, 27, 49); font-size: 20px; text-align: center; margin: 0 0 5px 0;}
             div #ADimg{margin: 15px 0 ; width:100px; height:100px;}
-            #Droneadd{width: 165px;height:150px;}
-            .add_drone{margin: 10px 0 ; width:120px; height:120px;}    
+            #Droneadd{width:165px;height:150px;}
+            .add_drone{width:120px; height:120px;}    
         }
     </style>
     <header>
         <h1>無人機管理系統</h1>
         <ul>
-            <li><a href="https://topologyuav.com:5003/Mange/">返回</a></li>
-            <li><a href="https://topologyuav.com:5003/Logout/">登出</a></li>    
+            <li><a href="https://topologyuav.com:5002/Mange/">首頁</a></li>
+            <li><a href="https://topologyuav.com:5002/Logout/">登出</a></li>    
         </ul>
     </header>
     <section>
@@ -60,19 +60,18 @@
             </div>
         </form>
         <div id="Droneadd" >
-            <a href="https://topologyuav.com:5003/DMange/NDrone/"><img class="add_drone" width="260px" height="260px"  src="../static/img/Add_drone.png" alt=" 新增無人機"></a>   
+            <a href="https://topologyuav.com:5002/DMange/NDrone/"><img class="add_drone" width="260px" height="260px"  src="../static/img/Add_drone.png" alt=" 新增無人機"></a>   
        </div>
     </section>
     <script>  
         var Anamelen = "{{DName_ls}}".replaceAll("(","").replaceAll(")","").replaceAll("&#39;","").replaceAll("[","").replaceAll("]","").split(",");   
         $(document).ready(function(){
-            $("#Drones").empty();
-            console.log(Anamelen[0]);   
+            $("#Drones").empty(); 
             for (i=0; i<Anamelen.length; i++){
                 if(i % 2 == 0){
-                    $("#Drones").append('<div id="Drones">'+
-                        '<a href="https://topologyuav.com:5003/DMange/DFSS/">'+
-                        '<img id="ADimg" src="https://topologyuav.com:5003/static/img/Drone.png" alt="無人機">'+'</a>'+
+                    $("#Drones").append('<div id="Drones" data-value="'+Anamelen[i]+'">'+
+                        '<a href="https://topologyuav.com:5002/DMange/DFSS/?name='+Anamelen[i]+''+Anamelen[i+1]+'">'+
+                        '<img id="ADimg" src="https://topologyuav.com:5002/static/img/HJ940-1.png" alt="無人機">'+'</a>'+
                         '<h3>'+Anamelen[i]+'</h3>'+
                         '</div>')}};
             if (Anamelen[0] == '[No drone&#39;'){

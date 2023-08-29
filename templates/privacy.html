@@ -67,28 +67,12 @@
             <p>本行動應用程式隱私權保護政策將因應需求隨時進行修正，修正後的條款將刊登於網站上。</p>
         </section>
         <div class="privacy">
-            <a href="https://topologyuav.com:5003/Login/"><input id="signout" type="submit" value="取消"></a>
-            <a href="https://topologyuav.com:5003/Mange/"><input id="signin" type="submit" value="確認" onclick="closePrivacyPolicy()"></a>    
+            <form action="/Privacy/" method="post">
+                <input id="signout" type="submit" name="reprivacy" value="取消">
+                <input id="signin" type="submit" name="reprivacy" value="確認">   
+            </form>
         </div>
     </div>
-    <script>
-        function hasSeenPrivacyPolicy() {
-            return localStorage.getItem('privacyPolicySeen') === 'true';
-        }
-        function setSeenPrivacyPolicy() {
-            localStorage.setItem('privacyPolicySeen', 'true');
-        }
-        function closePrivacyPolicy() {
-            var privacyPolicyDiv = document.getElementById('privacy-policy');
-            privacyPolicyDiv.style.display = 'none';
-            setSeenPrivacyPolicy();
-        }
-        if (hasSeenPrivacyPolicy()) {
-            var privacyPolicyDiv = document.getElementById('privacy-policy');
-            privacyPolicyDiv.style.display = 'none';
-            window.location.assign("https://topologyuav.com:5003/Mange/");
-        }
-    </script>   
 </body>
 </html>
 

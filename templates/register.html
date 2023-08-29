@@ -16,25 +16,29 @@
         *{margin: 0;padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
         body{background-image: url(../static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
         header{z-index: -2;background-position: right center;}
-        .register{text-align: center;align-items:center;justify-content:center;position: absolute;top: 8%;left: 30%;z-index: 10; }
+        .register{text-align: center;align-items:center;justify-content:center;position: absolute;top: 8%; left: 30%; z-index: 10;  }
         h1{color: aliceblue;font-size: 50px;text-align: center;margin: 10px 0 15px;}
         h2{color: aliceblue;font-size: 28px;margin: 5px 100px 20px 0;left: 600px;}
         input{opacity: 0.5;font-size: 22px;}
-        #submit,.cancel{float: right;padding: 10px 10px ; margin: 30px 30px;background-color: rgba(256, 256, 256, 0.9);border-radius: 15%;}
-        .check{position: relative;}
+        .buttons{position: absolute; right: 14%;}
+        #submit,.cancel{float: right;padding: 10px 10px ; margin: 30px 30px;border-radius: 15%; opacity: 1;background-color: rgba(256, 256, 256, 0.8);}
+        #rpasswords{margin-left:22px;}
+        #rphonenum{margin-left:22px;}
         @media screen and (max-width: 1200px) and (min-width:769px) {
-            header{width:1200px; position: relative;}
-            .register {position: absolute;z-index: 10; width: 70%;top: 2%;left: 3%;}
-            h1{ font-size: 36px; text-align: center;bottom: 20%; color: aliceblue;} 
-            h2{ font-size: 24px; color: aliceblue; text-align: left;}
+            header{width:1200px;}
+            .register {z-index: 10; width: 70%;top: 2%;left: 3%;}
+            h1{ font-size: 36px; text-align: center;bottom: 20%;} 
+            h2{ font-size: 24px;  text-align: center;}
+            .buttons{right: 30%;}
             #submit,.cancel{font-size: 28px;text-align: center; padding: 15px 15px; margin: 35px 30px 0 0}
         }
         @media screen and (max-width: 720px) {
-            header{ z-index: -2; width: 360px; height: 640px;position: relative;}
-            .register {position: absolute;z-index: 10; width: 70%;top: 3%;left: 10%;}
-            h1{ font-size: 30px; text-align: center;bottom: 10%; color: aliceblue;} 
-            h2{ font-size: 20px; color: aliceblue; text-align: left;}
+            header{ z-index: -2; width: 360px; height: 640px;}
+            .register {z-index: 10; width: 70%;top: 3%;left: 10%;}
+            h1{ font-size: 30px; text-align: center;bottom: 10%;} 
+            h2{ font-size: 20px; text-align: left;}
             input{ opacity: 0.5; font-size: 16px; width: auto; }
+            .buttons{right: 25%;}
             #submit,.cancel{ text-align: center; padding: 8px 5px; margin: 10px 10px; }
         }
         </style>
@@ -42,17 +46,14 @@
         <div class="register">
             <form method="post" action="/Register/">
                 <h1>註冊</h1>
-                <div class="check">
-                    <h2>使用者帳號 <input id="ruserid" type="email" value="" name="userid" size="20" placeholder="請輸入註冊信箱" pattern="^(?=.*[A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required></h2> 
-                    <h5 class="testpw"></h5>
+                <h2>使用者帳號 <input id="ruserid" type="email" value="" name="userid" size="20" placeholder="請輸入註冊信箱" pattern="^(?=.*[A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required></h2> 
                 <h2>使用者密碼 <input id="rpassword" type="password" value="" name="userpw" size="20" minlength="8" placeholder="請輸入含英數至少八個字元" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入正確的密碼格式:含英文字母大小寫、數字至少八個字元');"></h2>
-                <h2>輸入密碼   <input id="rpasswords" type="password" size="20"  placeholder="請再輸入相同密碼一次" required oninput="setCustomValidity('');" onchange="if(document.getElementById('rpassword').value != document.getElementById('rpasswords').value){setCustomValidity('密碼不相同');}" onkeyup="validate()" /></h2>
-                </div>    
+                <h2>輸入密碼 <input id="rpasswords" type="password" size="20"  placeholder="請再輸入相同密碼一次" required oninput="setCustomValidity('');" onchange="if(document.getElementById('rpassword').value != document.getElementById('rpasswords').value){setCustomValidity('密碼不相同');}" onkeyup="validate()" /></h2>    
                 <h2>使用者姓名 <input id="rusername" type="text" value="" size="20" name="username" placeholder="請輸入英文姓名"  pattern="^(?=.*[A-Za-z])[a-zA-Z]{2,}$" required oninvalid="setCustomValidity('請輸入正確格式:英文字母大小寫至少2個字元')" oninput="setCustomValidity('');"> </h2>
-                <h2>連絡電話   <input id="rphonenum" type="tel" value="" size="20" name="userphone" pattern="09\d{2}-\d{6}" placeholder="請輸入格式 09xx-xxxxxx" maxlength="11" required oninvalid="setCustomValidity('請輸入正確格式:0900-000000')" oninput="setCustomValidity('');"> </h2>
+                <h2>連絡電話 <input id="rphonenum" type="tel" value="" size="20" name="userphone" pattern="09\d{2}-\d{6}" placeholder="請輸入格式 09xx-xxxxxx" maxlength="11" required oninvalid="setCustomValidity('請輸入正確格式:0900-000000')" oninput="setCustomValidity('');"> </h2>
                 <div class="buttons">
-                    <input id="submit" type="submit" value="確認" onclick="CheckInputEmpty()">
-                    <a href="https://topologyuav.com:5003/Login/"><input class="cancel" type="button" value="取消"></a>
+                    <input id="submit" type="submit" name="registerin" value="確認">
+                    <a href="https://topologyuav.com:5002/Login/"><input class="cancel" type="button" value="取消"></a>
                 </div>
             </form>
         </div>
@@ -67,6 +68,14 @@
             else {
                 document.getElementById("submit").disabled = true;
             }
+        }
+    </script>
+    <script>
+        window.onload = function check() {
+            var registration = "{{ RAC }}";
+            if (registration == 'the same account') {
+                    alert("帳號重複，請重新註冊!!");
+            } else{}
         }
     </script>
     </body>

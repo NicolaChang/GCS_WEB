@@ -12,11 +12,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
 </head>
 <body>
     <style>
         *{ margin: 0;padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
-        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        body{background-image: url(https://topologyuav.com:5002/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
         header{display: block;margin: auto;padding: 10px;}
         header h1{color: aliceblue; font-size: 52px;display: inline-block;vertical-align: top;margin: 0 10px;}
         header ul {  display: block;  text-align: right; float: right; font-size: 23px;  display: flex; list-style: none; right: 5px; top: 10px;}
@@ -33,8 +34,9 @@
     <header>
         <h1>帳戶管理系統</h1>
         <ul>
-            <li><a href="https://topologyuav.com:5003/Mange/">返回</a></li> 
-            <li><a href="https://topologyuav.com:5003/Logout/">登出</a></li>    
+            <li><a href="https://topologyuav.com:5002/Mange/">首頁</a></li> 
+            <li><a href="https://topologyuav.com:5002/MangeAT/">機隊管理</a></li>    
+            <li><a href="https://topologyuav.com:5002/Logout/">登出</a></li>    
         </ul>
     </header>
     <section>
@@ -44,45 +46,7 @@
             </div>
         </form>
     </section>
-    <!-- <script>
-        //不指定回傳值
-        console.log("{{DName_ls}}","無人機名稱test");
-        console.log(typeof("{{DName_ls}}"));   
-        var Anamelen = "{{DName_ls}}".replaceAll("(","").replaceAll(")","").replaceAll("&#39;","").replaceAll("[","").replaceAll("]","").split(",");  
-        $(document).ready(function(){
-            $("#ADrones").empty();
-            console.log(Anamelen[0],"Tests");   
-            for (i=0; i<Anamelen.length; i++){
-                if(i % 2 == 0){
-                    $("#ADrones").append('<div id="ADrone" onmouseover=ANA()>'+
-                        '<a href="http://59.120.184.123:5000/AMange/Dinfo/">'+
-                        '<img id="ADimg" src="http://59.120.184.123:5000/static/img/Drone.png" alt="無人機">'+
-                        '<h3 id="hname" value="Anamelen[i]">'+Anamelen[i]+'</h3>'+
-                        '</a>'+'</div>');
-                };
-            }
-            if (Anamelen[0] == '[No drone&#39;'){
-                $(".Account").empty();
-            }; 
-            if (Anamelen[0] == ''){
-                $(".Account").empty();
-            };
-        })
-        var CC = $('#hname').val();  
-        function ANA(){
-                var naid = {'Dname': CC,'Duuid':Anamelen[1]} ;
-                console.log(CC);     
-                console.log(naid,"naid");
-                $.ajax({
-                    url:'http://59.120.184.123:5000/AMange/',
-                    type: 'post', // 用POST or GET的方式
-                    method:'POST',
-                    dataType: 'json',  // 資料的格式
-                    data: naid, // 傳送給後端的資料
-                    async: false, // 是否開啟同步非同步請求
-                });
-            }
-    </script> -->
+  
     <script>
         var Anamelen = "{{DName_ls}}".replaceAll("(","").replaceAll(")","").replaceAll("&#39;","").replaceAll("[","").replaceAll("]","").split(",");   
         $(document).ready(function(){
@@ -91,8 +55,8 @@
             for (i=0; i<Anamelen.length; i++){
                 if(i % 2 == 0){
                     $("#ADrone").append('<div id="ADrones">'+
-                        '<a href="https://topologyuav.com:5003//AMange/Dinfo/">'+
-                        '<img id="ADimg" src="https://topologyuav.com:5003/static/img/Drone.png" alt="無人機">'+'</a>'+
+                        '<a href="https://topologyuav.com:5002/AMange/Dinfo/?name='+Anamelen[i]+Anamelen[i+1]+'">'+
+                        '<img id="ADimg" src="https://topologyuav.com:5002/static/img/HJ940-1.png" alt="無人機">'+'</a>'+
                         '<h3>'+Anamelen[i]+'</h3>'+
                         '</div>')}};
             if (Anamelen[0] == '[No drone&#39;'){

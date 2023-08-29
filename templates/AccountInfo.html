@@ -18,14 +18,14 @@
 <body>
     <style>
         *{ margin: 0;padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
-        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        body{background-image: url(https://topologyuav.com:5002/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
         header{display: block;margin: auto;padding: 10px;}
         header h1{color: aliceblue; font-size: 52px;display: inline-block;vertical-align: top;margin: 0 10px;}
         header ul {  display: block;  text-align: right; float: right; font-size: 23px;  display: flex; list-style: none; right: 5px; top: 10px;}
         header li { background-color: rgba(256, 256, 256, 0.6); margin: 10px; top: 20px; padding: 5px; border-radius: 30%;}
         header li a { color: #360ee7b7;text-decoration: none;}
         header li a:hover { color: #0f2e29; font-weight: bolder;}
-        .ADetail{width: 100%;position: absolute;left:10%;}
+        .ADetail{display: flex; justify-content: center; align-items: center; height: 80vh;}
         #Account_Detail{margin: 0 5px; border:7px double #ece9e96b ; text-align: center;background-color: rgba(256, 256, 256, 0.5);}
         thead{background-color: #0c0050;color: #FFF; border:3px solid #dfdbdb;}
         th{border: #cec9c97c 3px solid ; padding: 5px 8px; font-size: 28px;}
@@ -34,9 +34,11 @@
     <header>
         <h1>帳戶管理系統</h1>
         <ul>
-            <li><a href="https://topologyuav.com:5003/AMange/DTdata/">飛行歷程</a></li> 
-            <li><a href="https://topologyuav.com:5003/AMange/DFRecord/">飛行紀錄</a></li> 
-            <li><a href="https://topologyuav.com:5003/AMange/">上一頁</a></li>     
+            <li><a href="https://topologyuav.com:5002/Mange/">首頁</a></li>
+            <li><a href="https://topologyuav.com:5002/MangeAT/">機隊管理</a></li> 
+            <li><a href="https://topologyuav.com:5002/AMange/DTdata/">飛行歷程</a></li> 
+            <li><a href="https://topologyuav.com:5002/AMange/DFRecord/">飛行紀錄</a></li> 
+            <li><a href="https://topologyuav.com:5002/AMange/">上一頁</a></li>     
         </ul>
     </header>
     <section class="ADetail">
@@ -118,66 +120,69 @@
             </tbody> -->
         </table>
     </section>
-    <!-- <script type="text/javascript" charset="utf-8">
+    <script type="text/javascript" charset="utf-8">
+        var urlParams = new URLSearchParams(window.location.search);
+        var dronename = urlParams.get('name');
+        var droneArray = dronename.split(' ');
         $(document).ready(function () {
             var socket = io.connect();
-            $("#Account_Detail1").ready(function (e) {
+            $("#Account_Detail").ready(function (e) {
                 var data = ['drone_uuid'];
                 // var get_data = {{Drone_ls}};
                 // socket.emit('DName', data) 
                 console.log("DName"); 
                 socket.on('DDinfo',function (get_data)
                 {
-                    $("#Account_Detail1").empty();
+                    $("#Account_Detail").empty();
                     console.log("Dinfo");
-                    $('#Account_Detail1').append( '<tr>'+'<td>'+'無人機名稱'+'<br>'+get_data["D_name"]+'</td>'+
-                                                        '<td>'+'機體尺寸(展開)'+'<br>'+get_data["D_e"]+'</td>'+
-                                                        '<td>'+'空機重量'+'<br>'+get_data["D_nl"]+'</td>'+
-                                                        '<td>'+'鋰電池配置'+'<br>'+get_data["D_b"]+'</td>'+
+                    $('#Account_Detail1').append( '<tr>'+'<td>'+'無人機名稱'+'<br>'+droneArray[0]+'</td>'+
+                                                        // '<td>'+'機體尺寸(展開)'+'<br>'+get_data["D_e"]+'</td>'+
+                                                        // '<td>'+'空機重量'+'<br>'+get_data["D_nl"]+'</td>'+
+                                                        // '<td>'+'鋰電池配置'+'<br>'+get_data["D_b"]+'</td>'+
                                                         '<td>'+'保險名稱'+'<br>'+get_data["I_n"]+'</td>'+'</tr>');
-                    $('#Account_Detail1').append( '<tr>'+'<td>'+'流水號'+'<br>'+get_data["D_uu"]+'<br>'+'</td>'+
-                                                        '<td>'+'機體尺寸(收折)'+'<br>'+get_data["D_c"]+'</td>'+
-                                                        '<td>'+'有效負荷'+'<br>'+get_data["D_l"]+'</td>'+
-                                                        '<td>'+'</td>'+
+                    $('#Account_Detail1').append( '<tr>'+'<td>'+'流水號'+'<br>'+droneArray[0]+'<br>'+'</td>'+
+                    //                                     '<td>'+'機體尺寸(收折)'+'<br>'+get_data["D_c"]+'</td>'+
+                    //                                     '<td>'+'有效負荷'+'<br>'+get_data["D_l"]+'</td>'+
+                    //                                     '<td>'+'</td>'+
                                                         '<td>'+'保險單號'+'<br>'+get_data["I_num"]+'</td>'+'</tr>');
-                    $('#Account_Detail1').append( '<tr>'+'<td>'+'型號'+'<br>'+get_data["D_n"]+'</td>'+
-                                                        '<td>'+'軸距尺寸'+'<br>'+get_data["D_w"]+'</td>'+
-                                                        '<td>'+'最大起飛重量'+'<br>'+get_data["D_t"]+'</td>'+
-                                                        '<td>'+'</td>'+
-                                                        '<td>'+'保險單到期日'+'<br>'+get_data["I_dd"]+'</td>'+'</tr>');
-                    $('#Account_Detail1').append( '<tr>'+'<td>'+'</td>'+
-                                                        '<td>'+'機體結構類型'+'<br>'+get_data["D_s"]+'</td>'+
-                                                        '<td>'+'懸停最大功率'+'<br>'+get_data["D_loiter"]+'</td>'+
-                                                        '<td>'+'</td>'+
-                                                        '<td>'+'</td>'+'<tr>');
-                    $('#Account_Detail1').append( '<tr>'+'<td>'+'</td>'+
-                                                        '<td>'+'機臂尺寸'+'<br>'+get_data["D_a"]+'</td>'+
-                                                        '<td>'+'作業飛行速度'+'<br>'+get_data["D_speed"]+'</td>'+
-                                                        '<td>'+'</td>'+
-                                                        '<td>'+'</td>'+'<tr>');
-                    $('#Account_Detail1').append( '<tr>'+'<td>'+'</td>'+
-                                                        '<td>'+'螺旋槳尺寸'+'<br>'+get_data["D_p"]+'</td>'+
-                                                        '<td>'+'作業時間'+'<br>'+get_data["D_TTime"]+'</td>'+
-                                                        '<td>'+'</td>'+
-                                                        '<td>'+'</td>'+'<tr>');     
-                    $('#Account_Detail1').append( '<tr>'+'<td>'+'</td>'+
-                                                        '<td>'+'</td>'+
-                                                        '<td>'+'抗風級數'+'<br>'+get_data["D_RW"]+'</td>'+
-                                                        '<td>'+'</td>'+
-                                                        '<td>'+'</td>'+'<tr>');                                                              
-                    $('#Account_Detail1').append( '<tr>'+'<td>'+'</td>'+
-                                                        '<td>'+'</td>'+
-                                                        '<td>'+'最高飛行海拔高度'+'<br>'+get_data["D_LH"]+'</td>'+
-                                                        '<td>'+'</td>'+
-                                                        '<td>'+'</td>'+'<tr>'); 
-                    $('#Account_Detail1').append( '<tr>'+'<td>'+'</td>'+
-                                                        '<td>'+'</td>'+
-                                                        '<td>'+'最大手持遙控距離'+'<br>'+get_data["D_LR"]+'</td>'+
-                                                        '<td>'+'</td>'+
-                                                        '<td>'+'</td>'+'<tr>');                                         
+                    // $('#Account_Detail1').append( '<tr>'+'<td>'+'型號'+'<br>'+get_data["D_n"]+'</td>'+
+                    //                                     '<td>'+'軸距尺寸'+'<br>'+get_data["D_w"]+'</td>'+
+                    //                                     '<td>'+'最大起飛重量'+'<br>'+get_data["D_t"]+'</td>'+
+                    //                                     '<td>'+'</td>'+
+                    //                                     '<td>'+'保險單到期日'+'<br>'+get_data["I_dd"]+'</td>'+'</tr>');
+                    // $('#Account_Detail1').append( '<tr>'+'<td>'+'</td>'+
+                    //                                     '<td>'+'機體結構類型'+'<br>'+get_data["D_s"]+'</td>'+
+                    //                                     '<td>'+'懸停最大功率'+'<br>'+get_data["D_loiter"]+'</td>'+
+                    //                                     '<td>'+'</td>'+
+                    //                                     '<td>'+'</td>'+'<tr>');
+                    // $('#Account_Detail1').append( '<tr>'+'<td>'+'</td>'+
+                    //                                     '<td>'+'機臂尺寸'+'<br>'+get_data["D_a"]+'</td>'+
+                    //                                     '<td>'+'作業飛行速度'+'<br>'+get_data["D_speed"]+'</td>'+
+                    //                                     '<td>'+'</td>'+
+                    //                                     '<td>'+'</td>'+'<tr>');
+                    // $('#Account_Detail1').append( '<tr>'+'<td>'+'</td>'+
+                    //                                     '<td>'+'螺旋槳尺寸'+'<br>'+get_data["D_p"]+'</td>'+
+                    //                                     '<td>'+'作業時間'+'<br>'+get_data["D_TTime"]+'</td>'+
+                    //                                     '<td>'+'</td>'+
+                    //                                     '<td>'+'</td>'+'<tr>');     
+                    // $('#Account_Detail1').append( '<tr>'+'<td>'+'</td>'+
+                    //                                     '<td>'+'</td>'+
+                    //                                     '<td>'+'抗風級數'+'<br>'+get_data["D_RW"]+'</td>'+
+                    //                                     '<td>'+'</td>'+
+                    //                                     '<td>'+'</td>'+'<tr>');                                                              
+                    // $('#Account_Detail1').append( '<tr>'+'<td>'+'</td>'+
+                    //                                     '<td>'+'</td>'+
+                    //                                     '<td>'+'最高飛行海拔高度'+'<br>'+get_data["D_LH"]+'</td>'+
+                    //                                     '<td>'+'</td>'+
+                    //                                     '<td>'+'</td>'+'<tr>'); 
+                    // $('#Account_Detail1').append( '<tr>'+'<td>'+'</td>'+
+                    //                                     '<td>'+'</td>'+
+                    //                                     '<td>'+'最大手持遙控距離'+'<br>'+get_data["D_LR"]+'</td>'+
+                    //                                     '<td>'+'</td>'+
+                    //                                     '<td>'+'</td>'+'<tr>');                                         
                 })    
             });    
         });
-    </script>  -->
+    </script> 
 </body>
 </html>

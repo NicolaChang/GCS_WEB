@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Management</title>
+    <meta http-equiv='cache-control' content='no-store'>
+    <meta http-equiv='expires' content='no-store'>
+    <meta http-equiv='pragma' content='no-store'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <style>
+        *{ margin: 0;padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
+        body{background-image: url(https://topologyuav.com:5002/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        header{display: block;margin: auto;padding: 10px;}
+        header h1{color: aliceblue; font-size: 52px;display: inline-block;vertical-align: top;margin: 0 10px;}
+        header ul {  display: block;  text-align: right; float: right; font-size: 23px;  display: flex; list-style: none; right: 5px; top: 10px;}
+        header li { background-color: rgba(256, 256, 256, 0.6); margin: 10px; top: 20px; padding: 5px; border-radius: 30%;}
+        header li a { color: #360ee7b7;text-decoration: none;}
+        header li a:hover { color: #0f2e29; font-weight: bolder;}
+        article{ position: relative; top: 0%; left: 0; width: auto; flex-wrap: nowrap; justify-content: center; align-items: center; display: flex;}
+        .manage{ background-color: rgba(250, 235, 215, 0.281); display: block; margin: 15px ; padding: 2% 0%; width: 30%; height: 30%; float: left; text-align: center;border-radius: 50%;}
+        .manage:hover{transform: scale(1,1.05);}
+        a , a:visited, a:link{ text-decoration: none; color: black;}
+        h1{ font-size: 36px; margin: 5px 0 5px;}
+    </style>
+    <header>
+        <h1>帳戶管理系統</h1>
+        <ul>
+            <li><a href="https://topologyuav.com:5002/Mange/">首頁</a></li> 
+            <li><a href="https://topologyuav.com:5002/Logout/">登出</a></li>    
+        </ul>
+    </header>
+    <article>
+        <div class="manage">
+            <a href="https://topologyuav.com:5002/AMange/">
+            <img width="150px" height="150px" src="https://topologyuav.com:5002/static/img/HJ608-2.png" alt="無人機管理"><br>
+            <h1>無人機</h1><br>
+            <h1>Drone</h1><br></a>
+        </div>
+        <div class="manage">
+            <a href="https://topologyuav.com:5002/Fleet/">
+            <img width="150px" height="150px" src="https://topologyuav.com:5002/static/img/Fleet.png" alt="機隊管理"><br>
+            <h1>機隊管理</h1><br>
+            <h1>Fleet</h1><br></a>
+        </div>
+    </article>
+</body>
+</html> 

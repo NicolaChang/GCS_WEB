@@ -15,30 +15,35 @@
 <body>
     <style>
         *{margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace,sans-serif;}
-        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover; z-index: -99;}
+        body{background-image: url(https://topologyuav.com:5002/static/img/BGimage.png); background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover; z-index: -99;}
         header{ z-index: -2; background-position: right center;z-index: 99;}
-        .login{ text-align: center; align-items:center; justify-content:center; position: absolute; top:8%; left: 30%; z-index: 99;  padding: 0 20px;}
+        .login{ text-align: center; align-items:center; justify-content:center; position: absolute; top:6%; left: 30%; z-index: 99;  padding: 0 20px;}
         h1{color: aliceblue; font-size: 50px; text-align: center; margin: 30px 20px; padding: 20px; bottom: 20%;z-index: 99;}
         h2{color: aliceblue; font-size: 30px; margin: 5px 100px 20px 0;z-index: 99;}
-        h3{position: absolute; left: 30%; color: red; font-size: 16px;z-index: 99;}
+        h3{position: absolute; left: 36%; color: red; font-size: 16px;z-index: 99;}
         input{ opacity: 0.5; font-size: 22px; }
-        #signin,#register{ float: right; padding: 10px 15px; margin: 40px 40px; opacity: 1;background-color: rgba(256, 256, 256, 0.8);border-radius: 15%;z-index: 99;}
+        .buttons{position: absolute; right: 12%;}
+        #signin,#register{font-size: 24px;float: right; padding: 10px 15px; margin: 40px 40px; opacity: 1;background-color: rgba(256, 256, 256, 0.8);border-radius: 15%;z-index: 99;}
+        #dronenanme{margin-left:30px;}
         @media screen and (max-width: 1200px) and (min-width:769px) {
             header{width:1200px; position: relative;} .login{ position: absolute;z-index: 10; width: 70%;top: 2%;left: 4%;}
             h1{ font-size: 40px; bottom: 20%; } 
-            h2{ font-size: 30px;text-align: left; padding: 10px 15px;}
-            input{z-index: 99;font-size: 24px; width: auto;text-align: center}
-            .buttons{float: right; position: absolute; right: 30%;}
-            #signin,#register{font-size: 28px;text-align: center; padding: 15px 15px; margin: 35px 30px 0 0;}
+            h2{ font-size: 26px;text-align: center; padding: 10px 15px;}
+            h3{left: 42%; font-size: 14px;margin: 5px 0 5px 0;}
+            input{z-index: 99;font-size: 20px; width: auto;text-align: center}
+            .buttons{ right: 26%; margin-top: 5px;}
+            #signin,#register{font-size: 22px;text-align: center; padding: 15px 15px; margin: 35px 30px 0 0;}
         }
         @media screen and (max-width: 720px) {
             body{display: flex;justify-content: center;}
             header{ z-index: -2; width: 360px; height: 640px;position: relative;}
             .login{ position: absolute;z-index: 10; width: 70%;top: 10%;left: 8%;}
-            h1{ font-size: 36px; bottom: 20%; } 
-            h2{ font-size: 28px; text-align: left;}
+            h1{ font-size: 32px; bottom: 20%; } 
+            h2{ font-size: 24px; text-align: center;}
+            h3{left: 6%; font-size: 12px;margin: 5px 0 5px 0;}
             input{z-index: 99; font-size: 18px; width: auto;text-align: center}
-            #signin,#register{font-size: 18px; text-align: center; padding: 5px; margin: 10px;}
+            #signin,#register{font-size: 18px; text-align: center; padding: 5px; margin: 40px 20px 0 0;  }
+            #dronenanme{margin-left:0px;}
         } 
     </style>
     <header>
@@ -49,7 +54,7 @@
                 <h2>無人機名稱 <input id="dronenanme" name="Dname" type="text" size="20" value="" minlength="2" placeholder="請輸入無人機名稱(英數)" required pattern="^(?=.*[A-Za-z\d])[a-zA-Z\d]{2,}$" > </h2>
                 <h3><span class="material-icons">warning</span>無人機名稱設定完成後不能更改</h3>
                 <div class="buttons">
-                    <a href="https://topologyuav.com:5003/DMange/"><input id="signin" type="button" value="返回"></a>
+                    <a href="https://topologyuav.com:5002/DMange/"><input id="signin" type="button" value="返回"></a>
                     <input id="register" type="submit" value="確認"></a>
                 </div>
             </form>    

@@ -15,7 +15,7 @@
 <body>
     <style>
         *{ margin: 0;padding: 0; border: none; font-family: 'Courier New', Courier, monospace,sans-serif;}
-        body{background-image: url(https://topologyuav.com:5003/static/img/BGimage.png);display: block;margin: auto;padding: 10px;z-index: 99;background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
+        body{background-image: url(https://topologyuav.com:5002/static/img/BGimage.png);display: block;margin: auto;padding: 10px;z-index: 99;background-repeat: no-repeat; background-attachment: fixed;background-position: center;background-size: cover;}
         header h1{color: aliceblue;font-size: 52px;display: inline-block;vertical-align: top;margin: 0 10px; }
         header ul { display: block;  text-align: right; float: right; font-size: 23px;  display: flex; list-style: none; right: 5px; top: 10px;}
         header li { background-color: rgba(256, 256, 256, 0.5); margin: 10px; top: 15px; padding: 5px; border-radius: 30%;}
@@ -34,9 +34,10 @@
    <header>
     <h1>無人機管理系統</h1>
     <ul>
-        <li><a href="https://topologyuav.com:5003/DMange/DFSS/">即時資訊</a></li>
-        <li><a href="https://topologyuav.com:5003/DMange/DFproject/">飛行計畫</a></li>
-        <li><a href="https://topologyuav.com:5003/DMange/">上一頁</a></li>
+        <li><a href="https://topologyuav.com:5002/Mange/">首頁</a></li>
+        <li><a href="https://topologyuav.com:5002/DMange/DFSS/">即時資訊</a></li>
+        <li><a href="https://topologyuav.com:5002/DMange/DFproject/">飛行計畫</a></li>
+        <li><a href="https://topologyuav.com:5002/DMange/">上一頁</a></li>
     </ul>
     </header>
     <article>
@@ -50,6 +51,7 @@
                 <span>經度</span>   
                 <span>緯度</span>  
                 <span>高度</span> 
+                <span>電壓</span> 
             </nav>
             <div id="map1" >
                 <form method="post" action="/AMange/" hidden>    
@@ -67,6 +69,7 @@
                 <span>經度</span>   
                 <span>緯度</span>  
                 <span>高度</span> 
+                <span>電壓</span> 
             </nav>
             <div id="map2">
                 <form method="post" action="/AMange/" hidden>    
@@ -84,6 +87,7 @@
                 <span>經度</span>   
                 <span>緯度</span>  
                 <span>高度</span> 
+                <span>電壓</span> 
             </nav>
             <div id="map3">
                 <form method="post" action="/AMange/" hidden>    
@@ -101,6 +105,7 @@
                 <span>經度</span>   
                 <span>緯度</span>  
                 <span>高度</span> 
+                <span>電壓</span> 
             </nav>
             <div id="map4">
                 <form method="post" action="/AMange/" hidden>    
@@ -139,10 +144,10 @@
         var map;
         function initMaps() {
             const LatLng = { lat: 24.802919070618568, lng:120.99921800849589 };
-            const flag1 = "https://topologyuav.com:5003/static/img/markerdrone1.ico";
-            const flag2 = "https://topologyuav.com:5003/static/img/markerdrone2.ico";
-            const flag3 = "https://topologyuav.com:5003/static/img/markerdrone3.ico";
-            const flag4 = "https://topologyuav.com:5003/static/img/markerdrone4.ico";
+            const flag1 = "https://topologyuav.com:5002/static/img/markerdrone1.ico";
+            const flag2 = "https://topologyuav.com:5002/static/img/markerdrone2.ico";
+            const flag3 = "https://topologyuav.com:5002/static/img/markerdrone3.ico";
+            const flag4 = "https://topologyuav.com:5002/static/img/markerdrone4.ico";
             const mapOptions = {
                 zoom: 14,
                 center: LatLng,
