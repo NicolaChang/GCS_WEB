@@ -116,7 +116,7 @@ def index_Logout():
             session.pop('Dname',None)
             session.pop('Duuid',None)
             return render_template('login.html',L_PW_Error = "?")
-        else: return redirect(url_for('DMange'))
+        else: return redirect(url_for('index_M'))
     else: return render_template('logout.html')
 
 #AM
