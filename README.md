@@ -7,9 +7,9 @@
 
 ### 檔案名稱及基本功能說明：
 * app.py：程式執行檔
-* register.html：註冊頁面 ` _兩次密碼輸入不同會鎖確認按鈕，註冊帳號重複會顯示提醒視窗_ `
-* login.html：登入頁面 `_按忘記密碼顯示對話框，登入成功會跳至下一頁，失敗回再登入介面_`
-* privacy.html：隱私權聲明頁面 `_登入介面會自動讀取mysql資料，每個帳號只會顯示一次_`
+* register.html：註冊頁面 `兩次密碼輸入不同會鎖確認按鈕，註冊帳號重複會顯示提醒視窗`
+* login.html：登入頁面 `按忘記密碼顯示對話框，登入成功會跳至下一頁，失敗回再登入介面`
+* privacy.html：隱私權聲明頁面 `登入介面會自動讀取mysql資料，每個帳號只會顯示一次`
 * Management.html：三大功能選擇頁面
 * AccountManag.html：帳戶管理主頁面
 * Account.html：帳戶無人機選擇頁面
@@ -17,16 +17,16 @@
 * AccountFlyHistory.html：飛行歷程頁面
 * AccountRecord.html：飛行紀錄頁面-地圖
 * Fleet.html：機隊管理頁面
-* Drone.html：無人機管理主頁面 `_點擊指定無人機會傳無人機名稱及流水號至即時資訊頁面_`
-* addDrone.html：新增無人機頁面 `_新增無人機自動將資料存至mysql_`
-* DroneMapVideo.html：即時資訊頁面 `_讀取即時FlightData顯示在頁面上，並根據即時經緯度繪製地圖軌跡，即時影像為RTSP串流影像_`
-* DronePlan.html：飛行計畫頁面 `_點選任務名稱一次只能選一項任務_`
-* DroneView.html：多重視角切換頁面 `_多重視角表格顯示前四台無人機名稱，並將無人機名稱傳至下一頁_`
-* DroneViews.html：四格視角及地圖頁面 `_讀取前四台無人機名稱，即時資料尚未規劃，四格RTSP影像目前為相同_`
+* Drone.html：無人機管理主頁面 `點擊指定無人機會傳無人機名稱及流水號至即時資訊頁面`
+* addDrone.html：新增無人機頁面 `新增無人機自動將資料存至mysql`
+* DroneMapVideo.html：即時資訊頁面 `讀取即時FlightData顯示在頁面上，並根據即時經緯度繪製地圖軌跡，即時影像為RTSP串流影像`
+* DronePlan.html：飛行計畫頁面 `點選任務名稱一次只能選一項任務`
+* DroneView.html：多重視角切換頁面 `多重視角表格顯示前四台無人機名稱，並將無人機名稱傳至下一頁`
+* DroneViews.html：四格視角及地圖頁面 `讀取前四台無人機名稱，即時資料尚未規劃，四格RTSP影像目前為相同`
 * Mission.html：任務規劃主頁面
 * MissionReview.html：建立任務名稱頁面
 * MissionSet.html：任務規劃頁面
-* logout.html：登出介面 `_選擇確認跳至登入介面，選擇返回介面跳至三大功能選擇頁面_`
+* logout.html：登出介面 `選擇確認跳至登入介面，選擇返回介面跳至三大功能選擇頁面`
 * fullchain.pem：SSL憑證
 * privkey.pem：SSL憑證
 * requirements.txt：已安裝之套件清單
